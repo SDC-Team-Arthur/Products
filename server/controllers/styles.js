@@ -25,7 +25,6 @@ const get = (req, res) => {
 
   pool.query(queryString)
   .then((results) => {
-    console.log(results.rows)
     const finalObj = {
       product_id: product_id,
       results: results.rows
