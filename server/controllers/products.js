@@ -17,7 +17,7 @@ const get = (req, res) => {
   .catch((err) => {
     console.error(err);
   })
-  pool.end();
+
 }
 
 

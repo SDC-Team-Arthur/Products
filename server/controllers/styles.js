@@ -22,34 +22,15 @@ const get = (req, res) => {
   WHERE styles.product_id = ${product_id}
   GROUP BY styles.style_id, photos.style_id, skus.style_id`
 
-  // `SELECT styles.style_id,
-  // styles.style_name AS name,
-  // styles.original_price,
-  // REPLACE(styles.sale_price, 'null', '0') AS sale_price,
-  // styles.default_style as "default?",
-  // (SELECT JSON_AGG(JSON_BUILD_OBJECT('thumbnail_url', photos.thumbnail_url, 'url', photos.url)) FROM photos WHERE photos.style_id = styles.style_id) AS photos, (SELECT JSON_OBJECT_AGG(skus.sku_id, JSON_BUILD_OBJECT('quantity', skus.quantity, 'size', skus.size)) FROM skus WHERE skus.style_id = styles.style_id) AS skus
-  // FROM styles
-  // INNER JOIN skus
-  // ON skus.style_id = styles.style_id
-  // INNER JOIN photos
-  // ON styles.style_id = photos.style_id
-  // WHERE styles.product_id = ${product_id}
-  // GROUP BY styles.style_id, photos.style_id, skus.style_id`
-
-  // `SELECT styles.style_id,
-  // styles.style_name AS name,
-  // styles.original_price,
-  // REPLACE(styles.sale_price, 'null', '0') AS sale_price,
-  // styles.default_style as "default?",
-  // (SELECT JSON_AGG(JSON_BUILD_OBJECT('thumbnail_url', photos.thumbnail_url, 'url', photos.url)) FROM photos WHERE photos.style_id = styles.style_id) AS photos, (SELECT JSON_OBJECT_AGG(skus.sku_id, JSON_BUILD_OBJECT('quantity', skus.quantity, 'size', skus.size)) FROM skus WHERE skus.style_id = styles.style_id) AS skus
-  // FROM styles
-  // WHERE styles.product_id = ${product_id}
-  // GROUP BY styles.style_id`
 
   pool.query(queryString)
   .then((results) => {
-    console.log(results.rows[0].photos)
-    res.send(results.rows[0])
+    console.log(results.rows)
+    const finalObj = {
+      product_id: product_id,
+      results: results.rows
+    }
+    res.send(finalObj)
   })
   .catch((err) => {
     console.error(err);
