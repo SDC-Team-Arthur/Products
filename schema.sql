@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS products;
 
-CREATE DATABASE products;
+CREATE DATABASE IF NOT EXISTS products;
 
 \c products;
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS styles (
   product_id INTEGER NOT NULL,
   style_name CHARACTER VARYING (30),
   original_price CHARACTER VARYING(10) NOT NULL,
-  sale_price CHARACTER VARYING(10),
+  sale_price CHARACTER VARYING(10) NOT NULL DEFAULT 0,
   default_style BOOLEAN,
   FOREIGN KEY (product_id) REFERENCES products (product_id)
 );
