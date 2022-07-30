@@ -80,3 +80,7 @@ FROM '/Users/jasonchiou/HR/SDC Data/skus.csv'
 DELIMITER ','
 CSV HEADER;
 
+COPY related_products(related_id, current_product_id, related_product_id)
+FROM '/Users/jasonchiou/HR/SDC Data/related.csv'
+DELIMITER ','
+CSV HEADER;

@@ -15,6 +15,8 @@ app.get('/products/:product_id', controllers.product_id.get);
 
 app.get('/styles/:product_id', controllers.styles.get);
 
+app.get('/products/:product_id/related', controllers.related.get)
+
 
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);

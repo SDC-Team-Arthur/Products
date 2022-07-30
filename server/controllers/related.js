@@ -7,8 +7,9 @@ const get = (req, res) => {
   console.log('products.get was invoked,', req.params)
   const numPages = req.params.page || 1;
   const count = req.params.count || 5;
+  const product_id = req.params.product_id;
 
-  const queryString = `WITH products AS (SELECT product_id AS id, product_name AS name, slogan, description, category, default_price FROM products LIMIT ${count}) SELECT JSON_AGG(products.*) FROM products`
+  const queryString = `SELECT JSON_AGG(related_products.related_product_id) FROM related_products WHERE related_products.current_product_id = ${product_id}`
 
   pool.query(queryString)
   .then((results) => {
