@@ -4,7 +4,7 @@ const express = require('express');
 
 const expect = require('chai').expect;
 
-describe ('GET product_id', function() {
+describe ('GET products', function() {
   it('should return a 200 status when submitting a GET request', async function() {
     const response = await request.get('/products');
     expect(response.status).to.equal(200);

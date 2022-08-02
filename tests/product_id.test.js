@@ -9,7 +9,7 @@ describe ('GET product_id', function() {
 })
 
   it ('returns all correct product level information for a specified product id (11)', async function () {
-    const response = await request.get('/11');
+    const response = await request.get('/products/11');
     expect(response.status).to.equal(200);
     expect(response.body.id).to.equal(11);
     expect(response.body.name).to.equal('Air Minis 250');
@@ -19,4 +19,5 @@ describe ('GET product_id', function() {
     expect(response.body.default_price).to.equal('49');
     expect(Object.keys(response.body).length).to.equal(7);
   })
+  done();
 })

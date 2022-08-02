@@ -11,7 +11,7 @@ describe ('GET styles for a product_id', function() {
   });
 
   it('should have the correct parameters in the response body', async function(done) {
-    const response = await request.get('/products/1/styles')
+    const response = await request.get('/products/1/styles').timeout({response: 1500000, deadline: 15000})
     .then(() => {
       expect(response.body).to.have.property('product_id');
       expect(response.body).to.have.property('results');
@@ -20,7 +20,7 @@ describe ('GET styles for a product_id', function() {
     })
     .catch((err) => {
       done(err);
-    }).timeout(12000);
+    })
 
 
   })
