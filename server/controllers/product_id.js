@@ -1,7 +1,6 @@
 const {pool} = require('../../db/index.js')
 
 const get = (req, res) => {
-  console.log('product_id\'s get request');
   const product_id = req.params.product_id;
   const queryString =
   `SELECT

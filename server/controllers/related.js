@@ -4,7 +4,6 @@ const Promise = require('bluebird');
 
 
 const get = (req, res) => {
-  console.log('products.get was invoked,', req.params)
   const numPages = req.params.page || 1;
   const count = req.params.count || 5;
   const product_id = req.params.product_id;

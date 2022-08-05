@@ -4,8 +4,6 @@ const Promise = require('bluebird');
 
 
 const get = (req, res) => {
-  console.log('styles.get was invoked');
-  console.log(req.params.product_id);
   const product_id = req.params.product_id;
   const queryString =
   `SELECT styles.style_id,
